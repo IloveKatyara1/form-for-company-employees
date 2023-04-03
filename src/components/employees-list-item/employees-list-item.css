@@ -48,6 +48,7 @@
     transition: 0.3s all;
     transform: translateX(30px);
     opacity: 0;
+    cursor: pointer;
 }
 
 .list-group-item.like .fa-star {
