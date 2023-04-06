@@ -13,13 +13,13 @@ class App extends Component {
 		super(props)
 		this.state = {
 			data: [
-				{name: 'John S.', earnings: 2000, premium: true, id: 1},
-				{name: 'Nazar T.', earnings: 20000, premium: true, id: 2},
-				{name: 'Tom A.', earnings: 5000, premium: false, id: 3},
+				{name: 'John S.', earnings: 2000, increase: true, like: true, id: 1},
+				{name: 'Nazar T.', earnings: 20000, increase: true, like: false, id: 2},
+				{name: 'Tom A.', earnings: 5000, increase: false, like: false, id: 3},
 			]
 		}
 
-		this.count = this.state.data.length
+		this.maxId = this.state.data.length
 	}
 
 	onDelete = (id) => {
@@ -29,10 +29,21 @@ class App extends Component {
 	}
 
 	addNewItem = (name, earnings) => {
-		this.count += 1
+		this.maxId += 1
 
 		this.setState(({data}) => ({
-			data: [...data, {name, earnings, premium: false, id: this.count}]
+			data: [...data, {name, earnings, increase: false, like: false, id: this.maxId}]
+		}))
+	}
+
+	onProps = (id, name) => {
+		this.setState(({data}) => ({
+			data: data.map(obj => {
+				if(obj.id === id) {
+					return {...obj, [name]: !obj[name]}
+				}
+				return obj;
+			})
 		}))
 	}
 
@@ -41,14 +52,19 @@ class App extends Component {
 
 		return (	
 			<div className="app">
-				<AppInfo />
+				<AppInfo 
+					dataLength={data.length}
+					premium={data.filter(elem => elem.increase).length}/>
 	
 				<div className="search-panel">
 					<SearchPanel/>
 					<AppFilter/>
 				</div>
 				
-				<EmployeesList data={data} onDelete={this.onDelete}/>
+				<EmployeesList 
+					data={data} 
+					onDelete={this.onDelete} 
+					onProps={this.onProps}/>
 				<EmployeesAddForm addNewItem={this.addNewItem}/>
 			</div>
 		  );
