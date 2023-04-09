@@ -16,7 +16,9 @@ class App extends Component {
 				{name: 'John S.', earnings: 2000, increase: true, like: true, id: 1},
 				{name: 'Nazar T.', earnings: 20000, increase: true, like: false, id: 2},
 				{name: 'Tom A.', earnings: 5000, increase: false, like: false, id: 3},
-			]
+			], 
+			term: '', 
+			filter: 'all',
 		}
 
 		this.maxId = this.state.data.length
@@ -47,27 +49,55 @@ class App extends Component {
 		}))
 	}
 
+	searchEmp = (data, term) => {
+		if(term.length === 0) {
+			return this.state.data
+		}
+
+		return data.filter(emp => emp.name.indexOf(term) > -1)
+	}
+	
+	onUpdataTerm = (value) => {
+		this.setState(({term}) => ({
+			term: value
+		}))
+	}
+
+	filterSetings = (data, filter) => {
+		if(filter === 'moreThan1000') return data.filter(item => item.earnings > 1000);
+		else if(filter === 'promotion') return data.filter(item => item.like);
+		else return data
+	}
+
+	onChangeFilter = (filterBtn) => {
+		this.setState(({filter}) => ({
+			filter: filterBtn
+		}))
+	}
+
 	render() {
-		const {data} = this.state;
+		const {data, term, filter} = this.state;
+		const filtredData = this.filterSetings(this.searchEmp(data, term), filter)
+		const premium = data.filter(elem => elem.increase).length;
 
 		return (	
 			<div className="app">
 				<AppInfo 
 					dataLength={data.length}
-					premium={data.filter(elem => elem.increase).length}/>
+					premium={premium}/>
 	
 				<div className="search-panel">
-					<SearchPanel/>
-					<AppFilter/>
+					<SearchPanel onUpdataTerm={this.onUpdataTerm}/>
+					<AppFilter filter={filter} onChangeFilter={this.onChangeFilter}/>
 				</div>
 				
 				<EmployeesList 
-					data={data} 
+					data={filtredData} 
 					onDelete={this.onDelete} 
 					onProps={this.onProps}/>
 				<EmployeesAddForm addNewItem={this.addNewItem}/>
 			</div>
-		  );
+		);
 	}
 }
 
