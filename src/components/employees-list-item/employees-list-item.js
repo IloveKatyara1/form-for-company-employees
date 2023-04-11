@@ -1,7 +1,7 @@
 import './employees-list-item.css';
 
 const EmployeesListItem = (props) => {
-    const {name, earnings, onDelete, increase, like, onProps} = props;
+    const {name, earnings, onDelete, increase, like, onProps, onModal} = props;
 
     let needPremium = 'list-group-item d-flex justify-content-between';
 
@@ -17,8 +17,13 @@ const EmployeesListItem = (props) => {
             <span className="list-group-item-label"
                 onClick={onProps}
                 data-toggle="like">{name}</span>
-            <input type="text" className="list-group-item-input" defaultValue={earnings + '$'}/>
+            <span className="list-group-item-input">{earnings + '$'}</span>
             <div className='d-flex justify-content-center align-items-center'>
+                <button type="button"
+                    className="btn-pen btn-sm "
+                    onClick={onModal}>
+                    <i className="fa-sharp fa-solid fa-pen"></i>
+                </button>
                 <button type="button"
                     className="btn-cookie btn-sm "
                     onClick={onProps}

@@ -5,6 +5,7 @@ import SearchPanel from '../search-panel/search-panel';
 import AppFilter from '../app-filter/app-filter';
 import EmployeesList from '../employees-list/employees-list';
 import EmployeesAddForm from '../employees-add-form/employees-add-form';
+import Modal from '../modal/modal';
 
 import './app.css';
 
@@ -19,6 +20,12 @@ class App extends Component {
 			], 
 			term: '', 
 			filter: 'all',
+			modal: {
+				modalName: 'none',
+				idRename: '', 
+				name: '',
+				salary: ''
+			}
 		}
 
 		this.maxId = this.state.data.length
@@ -30,7 +37,11 @@ class App extends Component {
 		}))
 	}
 
-	addNewItem = (name, earnings) => {
+	addNewItem = (e, name, earnings) => {
+		e.preventDefault();
+                                
+		if(name === '' || earnings === '') return
+
 		this.maxId += 1
 
 		this.setState(({data}) => ({
@@ -57,11 +68,7 @@ class App extends Component {
 		return data.filter(emp => emp.name.indexOf(term) > -1)
 	}
 	
-	onUpdataTerm = (value) => {
-		this.setState(({term}) => ({
-			term: value
-		}))
-	}
+	onUpdataTerm = (term) => this.setState(({term}))
 
 	filterSetings = (data, filter) => {
 		if(filter === 'moreThan1000') return data.filter(item => item.earnings > 1000);
@@ -69,14 +76,28 @@ class App extends Component {
 		else return data
 	}
 
-	onChangeFilter = (filterBtn) => {
-		this.setState(({filter}) => ({
-			filter: filterBtn
+	onChangeFilter = (filter) => this.setState({filter})
+
+	onModal = (modalName, idRename, name, salary) => this.setState(({modal}) => ({
+		modal: {modalName, idRename, name, salary} 
+	}))
+
+	onRenameEmp = (e, name, earnings) => {
+		e.preventDefault()
+
+		this.setState(({data}) => ({
+			data: data.map(element => {
+				if(element.id === this.state.modal.idRename) {
+					return {...element, name, earnings}
+				}
+
+				return element
+			})
 		}))
 	}
 
-	render() {
-		const {data, term, filter} = this.state;
+	render() {		
+		const {data, term, filter, modal} = this.state;
 		const filtredData = this.filterSetings(this.searchEmp(data, term), filter)
 		const premium = data.filter(elem => elem.increase).length;
 
@@ -94,8 +115,15 @@ class App extends Component {
 				<EmployeesList 
 					data={filtredData} 
 					onDelete={this.onDelete} 
-					onProps={this.onProps}/>
+					onProps={this.onProps} 
+					onModal={this.onModal}/>
 				<EmployeesAddForm addNewItem={this.addNewItem}/>
+
+				<Modal modalName={modal.modalName}
+					onRenameEmp={this.onRenameEmp}
+					onModal={this.onModal}
+					name={modal.name} 
+					salary={modal.salary}/>
 			</div>
 		);
 	}
