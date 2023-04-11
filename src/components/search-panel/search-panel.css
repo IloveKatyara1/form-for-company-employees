@@ -6,3 +6,22 @@
     box-shadow: 15px 15px 30px rgba(0,0,0, .15);
     color: #fff;
 }
+
+.search-div {
+    position: relative;
+}
+
+.btn_remove {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: none;
+    font-size: 22px;
+    display: none;
+}
+
+.active {
+    display: block;
+}
