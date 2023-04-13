@@ -8,122 +8,177 @@ class Modal extends Component {
         this.state = {
             inputs: {
                 name: null,
-                salary: null
-            }
+                salary: null,
+                nameComopany: ''
+            },
         }
     }
 
-    // const dataBtns = [
-    //     {placeHolder: 'view company', key: 'viewCompany'},
-    //     {placeHolder: 'or', isP: true},
-    //     {placeHolder: 'create company', key: 'createCompany'},
-    // ]
-
-    // const btns = dataBtns.map((btn, i) => {
-    //     if(btn.isP) return <p key={i}>{btn.placeHolder}</p>
-
-    //     const clazz = active === btn.key ? 'btn-light' : '';
-
-    //     return (
-    //         <button type="button"
-    //             className={`btn ${clazz}`}
-    //             key={btn.key}>
-    //             {btn.placeHolder}
-    //         </button>
-    //     )
-    // })
-
-//     <h4>
-//     виберіть дію
-// </h4>
-// <hr />
-// <div className="btn-group">
-//     {btns}
-// </div>
+    canClose = true
 
     onCloseModal = () => {
-        this.props.onModal('none')
+        if(this.canClose) {
+            this.props.onModal('none')
 
-        this.setState(({inputs}) => ({
-            inputs: {
-                name: null,
-                salare: null
-            }
-        }))
+            this.setState(({inputs}) => ({
+                inputs: {
+                    name: null,
+                    salare: null,
+                    nameComopany: null
+                }
+            }))
+        }
     }
 
+    changeCanClose = (boolen) => this.canClose = boolen
+
     render() {
-        const {modalName, onRenameEmp} = this.props
+        const {modalName, onRenameEmp, onChangeApp, onRenameNameCompany} = this.props;
 
-        if(modalName === 'rename') {                   
-            const onChangeValue = (e) => {
-                const { name, value } = e.target;
-                this.setState(({inputs}) => ({
-                    inputs: {
-                        ...inputs,
-                        [name]: value
-                    }
-                }))
-            }
+        let clazz = `modal`
 
-            const makeInputDefault = (nameFnc) => {
-                this.setState(({inputs}) => ({
-                    inputs: {
-                        ...inputs,
-                        [nameFnc]: null
-                    }
-                }))
+        if(modalName === 'selectAction' || modalName === 'modalRenameNameCompany') {
+            clazz = 'modal modal_mini'
+        }
 
-                return this.props[nameFnc]
-            }
+        const dataBtns = [
+            {placeHolder: 'view company', key: 'viewCompany', modalName: 'modal_selectAction'},
+            {placeHolder: 'or', isP: true},
+            {placeHolder: 'create company', key: 'createCompany', modalName: 'modalRenameNameCompany'},
+        ]
 
-            const {name, salary} = this.state.inputs
+        const onChangeValue = (e) => {
+            const { name, value } = e.target;
+            this.setState(({inputs}) => ({
+                inputs: {
+                    ...inputs,
+                    [name]: value
+                }
+            }))
+        }
 
-            return (
-                <div className="background" onClick={
-                        (e) => {if(e.target.classList[0] === 'background') this.onCloseModal()}
-                    }
-                >
-                    <div className="modal">
-                        <h4>rename</h4>
-                        <hr />
-                        <form className='add-form d-flex'>
+        const makeInputDefault = (nameFnc) => {
+            this.setState(({inputs}) => ({
+                inputs: {
+                    ...inputs,
+                    [nameFnc]: null
+                }
+            }))
+
+            return this.props[nameFnc]
+        }
+
+        const {name, salary, nameComopany} = this.state.inputs;
+
+        if(modalName === 'none') return;
+
+        this.canClose = true;
+
+        return (
+            <div className="background" 
+                onClick={
+                    (e) => {if(e.target.classList[0] === 'background') this.onCloseModal()}
+                }
+            >
+                <div className={clazz}>
+                    {modalName === 'selectAction' && (
+                        <>
+                            {this.canClose = false}
+                            <h4>
+                                виберіть дію
+                            </h4>
+                            <hr />
+                            <div className="btn-group">
+                                {
+                                    dataBtns.map((btn, i) => {
+                                        if(btn.isP) return <p key={i}>{btn.placeHolder}</p>
+
+                                        const clazz = this.props.active === btn.key ? 'btn-light' : '';
+                
+                                        return (
+                                            <button type="button"
+                                                className={`btn ${clazz}`}
+                                                key={btn.key}
+                                                onClick={() => onChangeApp(btn.key, btn.modalName)}
+                                            >
+                                                {btn.placeHolder}
+                                            </button>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </>
+                    )} {modalName === 'modalRenameEmp' && (
+                        <>
+                            <h4>rename</h4>
+                            <hr />
+                            <form className='add-form d-flex'>
+                                <input type="text" 
+                                    name='name'
+                                    placeholder='name' 
+                                    className='form-control new-post-label' 
+                                    onChange={onChangeValue} 
+                                    value={name ?? this.props.name} 
+                                />
+                                <input type="number" 
+                                    name='salary'
+                                    placeholder='З/П в $?' 
+                                    className='form-control new-post-label' 
+                                    onChange={onChangeValue} 
+                                    value={salary ?? this.props.salary} 
+                                />
+                                <button type="submit"
+                                    className="btn btn-outline-light blue"
+                                    onClick={(e) => {
+                                        onRenameEmp(e, name || makeInputDefault('name'), salary > 0 ? salary : makeInputDefault('salary') || makeInputDefault('salary'));
+                                        this.onCloseModal();
+                                    }}
+                                >
+                                    save
+                                </button>
+                                <button type="submit"
+                                    className="btn btn-outline-light red"
+                                    onClick={(e) => this.onCloseModal()}
+                                >
+                                    cancel
+                                </button>
+                            </form>
+                        </>
+                    )} {modalName === 'modalRenameNameCompany' && (
+                        <>
+                            {this.canClose = false}
+                            <h4>company name</h4>
+                            <hr />
                             <input type="text" 
-                                name='name'
-                                placeholder='name' 
-                                className='form-control new-post-label' 
-                                onChange={onChangeValue} 
-                                value={name ?? this.props.name} 
-                            />
-                            <input type="number" 
-                                name='salary'
-                                placeholder='З/П в $?' 
-                                className='form-control new-post-label' 
-                                onChange={onChangeValue} 
-                                value={salary ?? this.props.salary} 
-                            />
+                                    name='nameComopany'
+                                    placeholder='name company' 
+                                    className='form-control new-post-label' 
+                                    onChange={onChangeValue} 
+                                    value={nameComopany} 
+                                />
                             <button type="submit"
                                 className="btn btn-outline-light blue"
-                                onClick={(e) => {
-                                    onRenameEmp(e, name || makeInputDefault('name'), salary || makeInputDefault('salary'));
+                                onClick={() => {
+                                    if(!nameComopany) return
+
+                                    this.canClose = true
+                                    onRenameNameCompany(nameComopany)
                                     this.onCloseModal();
                                 }}
                             >
                                 save
                             </button>
                             <button type="submit"
-                                className="btn btn-outline-light red"
-                                onClick={(e) => this.onCloseModal()}
-                            >
-                                cancel
+                                    className="btn btn-outline-light red"
+                                    onClick={(e) => this.onCloseModal()}
+                                >
+                                    cancel
                             </button>
-                        </form>
-                    </div>
+                        </>
+                    )}
                 </div>
-            )
-        } else {
-            return <></>
-        }
+            </div>
+        )
     }
 }
 

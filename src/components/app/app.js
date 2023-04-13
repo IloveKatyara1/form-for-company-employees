@@ -20,16 +20,21 @@ class App extends Component {
 			], 
 			term: '', 
 			filter: 'all',
-			modal: {
-				modalName: 'none',
-				idRename: '', 
-				name: '',
-				salary: ''
-			}
+			modalProp: {
+				modalName: 'selectAction',
+				modalRenameEmp: {
+					idRename: '', 
+					name: '',
+					salary: ''
+				},
+			},
+			app: ''
 		}
 
 		this.maxId = this.state.data.length
 	}
+
+	nameCompany;
 
 	onDelete = (id) => {
 		this.setState(({data}) => ({
@@ -40,7 +45,7 @@ class App extends Component {
 	addNewItem = (e, name, earnings) => {
 		e.preventDefault();
                                 
-		if(name === '' || earnings === '') return
+		if(!name.trim() || !earnings.trim()) return
 
 		this.maxId += 1
 
@@ -78,8 +83,8 @@ class App extends Component {
 
 	onChangeFilter = (filter) => this.setState({filter})
 
-	onModal = (modalName, idRename, name, salary) => this.setState(({modal}) => ({
-		modal: {modalName, idRename, name, salary} 
+	onModal = (modalName, idRename, name, salary) => this.setState(({modalProp}) => ({
+		modalProp: {modalName, modalRenameEmp: {idRename, name, salary}} 
 	}))
 
 	onRenameEmp = (e, name, earnings) => {
@@ -87,7 +92,7 @@ class App extends Component {
 
 		this.setState(({data}) => ({
 			data: data.map(element => {
-				if(element.id === this.state.modal.idRename) {
+				if(element.id === this.state.modalProp.modalRenameEmp.idRename) {
 					return {...element, name, earnings}
 				}
 
@@ -96,36 +101,78 @@ class App extends Component {
 		}))
 	}
 
+	onChangeApp = (app, modalName) => this.setState((state) => ({
+		...state,
+		modalProp: {
+			...state.modalProp,
+			modalName
+		},
+		app
+	}))
+
+	onChangeModal = (modalName) => this.setState(({modalProp}) => ({
+		modalProp: {
+			...modalProp,
+			modalName
+		}
+	}))
+
+	onRenameNameCompany = (nameCompany) => {	
+		this.nameCompany = nameCompany;
+		this.render();
+	}
+	
+
+	canRenderInfoApp = false
+
 	render() {		
-		const {data, term, filter, modal} = this.state;
+		const {data, term, filter, modalProp, app} = this.state;
 		const filtredData = this.filterSetings(this.searchEmp(data, term), filter)
 		const premium = data.filter(elem => elem.increase).length;
 
-		return (	
-			<div className="app">
-				<AppInfo 
-					dataLength={data.length}
-					premium={premium}/>
-	
-				<div className="search-panel">
-					<SearchPanel onUpdataTerm={this.onUpdataTerm}/>
-					<AppFilter filter={filter} onChangeFilter={this.onChangeFilter}/>
+		if(app === 'createCompany') {
+			return (	
+				<div className="app">
+					<AppInfo 
+						dataLength={data.length}
+						premium={premium}
+						nameCompany={this.nameCompany}
+						onChangeModal={() => this.onChangeModal('modalRenameNameCompany')}	
+					/>
+		
+					<div className="search-panel">
+						<SearchPanel onUpdataTerm={this.onUpdataTerm}/>
+						<AppFilter filter={filter} onChangeFilter={this.onChangeFilter}/>
+					</div>
+					
+					<EmployeesList 
+						data={filtredData} 
+						onDelete={this.onDelete} 
+						onProps={this.onProps} 
+						onModal={this.onModal}/>
+					<EmployeesAddForm addNewItem={this.addNewItem}/>
+					<Modal modalName={modalProp.modalName}
+						onRenameEmp={this.onRenameEmp}
+						onModal={this.onModal}
+						name={modalProp.modalRenameEmp.name} 
+						salary={modalProp.modalRenameEmp.salary}
+						onRenameNameCompany={this.onRenameNameCompany}
+						/>
 				</div>
-				
-				<EmployeesList 
-					data={filtredData} 
-					onDelete={this.onDelete} 
-					onProps={this.onProps} 
-					onModal={this.onModal}/>
-				<EmployeesAddForm addNewItem={this.addNewItem}/>
+			);
+		} else if(app === 'viewCompany') {
 
-				<Modal modalName={modal.modalName}
+		} else {
+			return(
+				<Modal modalName={modalProp.modalName}
 					onRenameEmp={this.onRenameEmp}
 					onModal={this.onModal}
-					name={modal.name} 
-					salary={modal.salary}/>
-			</div>
-		);
+					name={modalProp.modalRenameEmp.name} 
+					salary={modalProp.modalRenameEmp.salary}
+					onChangeApp={this.onChangeApp}
+					/>
+			)
+		}
 	}
 }
 

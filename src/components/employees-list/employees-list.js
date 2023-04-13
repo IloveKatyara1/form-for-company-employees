@@ -11,7 +11,7 @@ const EmployeesList = ({data, onDelete, onProps, onModal}) => {
                 {...propsItem}
                 onDelete={() => onDelete(id)} 
                 onProps={(e) => onProps(id, e.currentTarget.getAttribute('data-toggle'))} 
-                onModal={() => onModal('rename', id, item.name, item.earnings)}/> 
+                onModal={() => onModal('modalRenameEmp', id, item.name, item.earnings)}/> 
     })
 
     return (
