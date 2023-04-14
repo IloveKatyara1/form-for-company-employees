@@ -9,12 +9,13 @@ class Modal extends Component {
             inputs: {
                 name: null,
                 salary: null,
-                nameComopany: ''
+                nameComopany: null
             },
         }
     }
 
-    canClose = true
+    canClose = true;
+    cantClose = true;
 
     onCloseModal = () => {
         if(this.canClose) {
@@ -30,15 +31,13 @@ class Modal extends Component {
         }
     }
 
-    changeCanClose = (boolen) => this.canClose = boolen
-
     render() {
         const {modalName, onRenameEmp, onChangeApp, onRenameNameCompany} = this.props;
 
         let clazz = `modal`
 
         if(modalName === 'selectAction' || modalName === 'modalRenameNameCompany') {
-            clazz = 'modal modal_mini'
+            clazz = 'modal ' + modalName
         }
 
         const dataBtns = [
@@ -99,7 +98,10 @@ class Modal extends Component {
                                             <button type="button"
                                                 className={`btn ${clazz}`}
                                                 key={btn.key}
-                                                onClick={() => onChangeApp(btn.key, btn.modalName)}
+                                                onClick={() => {
+                                                    onChangeApp(btn.key, btn.modalName)
+                                                    this.cantClose = true;
+                                                }}
                                             >
                                                 {btn.placeHolder}
                                             </button>
@@ -146,7 +148,7 @@ class Modal extends Component {
                         </>
                     )} {modalName === 'modalRenameNameCompany' && (
                         <>
-                            {this.canClose = false}
+                            {this.cantClose ? this.canClose = false : this.canClose = true}
                             <h4>company name</h4>
                             <hr />
                             <input type="text" 
@@ -154,14 +156,16 @@ class Modal extends Component {
                                     placeholder='name company' 
                                     className='form-control new-post-label' 
                                     onChange={onChangeValue} 
-                                    value={nameComopany} 
+                                    value={nameComopany ?? this.props.nameCompany} 
                                 />
                             <button type="submit"
                                 className="btn btn-outline-light blue"
                                 onClick={() => {
                                     if(!nameComopany) return
 
-                                    this.canClose = true
+                                    this.canClose = true;
+                                    this.cantClose = false;
+
                                     onRenameNameCompany(nameComopany)
                                     this.onCloseModal();
                                 }}
@@ -169,10 +173,10 @@ class Modal extends Component {
                                 save
                             </button>
                             <button type="submit"
-                                    className="btn btn-outline-light red"
-                                    onClick={(e) => this.onCloseModal()}
-                                >
-                                    cancel
+                                className="btn btn-outline-light red"
+                                onClick={() => this.cantClose ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()}
+                            >
+                                cancel
                             </button>
                         </>
                     )}

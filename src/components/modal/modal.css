@@ -14,9 +14,7 @@
 
 .modal {
     position: static;
-    min-height: 145px;
-    min-width: 300px;
-    max-height: 270px;
+    max-height: 280px;
     max-width: 360px;
     border-radius: 4px;
     background-color: #fff;
@@ -52,8 +50,11 @@
     width: 350px;
 }
 
-.modal_mini {
-    min-height: 175px;
-    width: 370px;
-    max-height: 215px;
+.selectAction {
+    height: 155px;
+    width: 370px;  
+}
+
+.modalRenameNameCompany {
+    height: 218px;
 }

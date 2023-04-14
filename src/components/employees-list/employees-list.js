@@ -16,7 +16,11 @@ const EmployeesList = ({data, onDelete, onProps, onModal}) => {
 
     return (
         <ul className="app-list list-group">
-            {employeesItem}
+            {data.length !== 0 ? employeesItem : (
+                <div className="nothing">
+                    <h2>here is nothing add new emploe</h2>
+                </div>
+            )}
         </ul>
     )
 }

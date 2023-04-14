@@ -14,9 +14,9 @@ const EmployeesListItem = (props) => {
     
     return (
         <li className={needPremium}>
-            <span className="list-group-item-label"
+            <button className="list-group-item-label"
                 onClick={onProps}
-                data-toggle="like">{name}</span>
+                data-toggle="like">{name}</button>
             <span className="list-group-item-input">{earnings + '$'}</span>
             <div className='d-flex justify-content-center align-items-center'>
                 <button type="button"

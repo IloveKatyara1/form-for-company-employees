@@ -28,13 +28,12 @@ class App extends Component {
 					salary: ''
 				},
 			},
-			app: ''
+			app: 'selectAction'
 		}
 
-		this.maxId = this.state.data.length
+		this.maxId = this.state.data.length;
+		this.nameCompany = '';
 	}
-
-	nameCompany;
 
 	onDelete = (id) => {
 		this.setState(({data}) => ({
@@ -130,49 +129,55 @@ class App extends Component {
 		const filtredData = this.filterSetings(this.searchEmp(data, term), filter)
 		const premium = data.filter(elem => elem.increase).length;
 
-		if(app === 'createCompany') {
-			return (	
-				<div className="app">
-					<AppInfo 
-						dataLength={data.length}
-						premium={premium}
-						nameCompany={this.nameCompany}
-						onChangeModal={() => this.onChangeModal('modalRenameNameCompany')}	
-					/>
-		
-					<div className="search-panel">
-						<SearchPanel onUpdataTerm={this.onUpdataTerm}/>
-						<AppFilter filter={filter} onChangeFilter={this.onChangeFilter}/>
-					</div>
-					
-					<EmployeesList 
-						data={filtredData} 
-						onDelete={this.onDelete} 
-						onProps={this.onProps} 
-						onModal={this.onModal}/>
-					<EmployeesAddForm addNewItem={this.addNewItem}/>
+		return (	
+			<div className="app">
+				{app === 'createCompany' && (
+					<>
+						<AppInfo 
+							dataLength={data.length}
+							premium={premium}
+							nameCompany={this.nameCompany}
+							onChangeModal={() => this.onChangeModal('modalRenameNameCompany')}	
+						/>
+			
+						<div className="search-panel">
+							<SearchPanel onUpdataTerm={this.onUpdataTerm}/>
+							<AppFilter filter={filter} onChangeFilter={this.onChangeFilter}/>
+						</div>
+						
+						<EmployeesList 
+							data={filtredData} 
+							onDelete={this.onDelete} 
+							onProps={this.onProps} 
+							onModal={this.onModal}/>
+						<EmployeesAddForm addNewItem={this.addNewItem}/>
+						<Modal 
+							modalName={modalProp.modalName}
+							onRenameEmp={this.onRenameEmp}
+							onModal={this.onModal}
+							name={modalProp.modalRenameEmp.name} 
+							salary={modalProp.modalRenameEmp.salary}
+							nameCompany={this.nameCompany}
+							onRenameNameCompany={this.onRenameNameCompany}
+							onChangeApp={this.onChangeApp}
+						/>
+					</>
+				)} {app === 'viewCompany' && (
+					<>
+
+					</>
+				)} {app === 'selectAction' && (
 					<Modal modalName={modalProp.modalName}
 						onRenameEmp={this.onRenameEmp}
 						onModal={this.onModal}
 						name={modalProp.modalRenameEmp.name} 
 						salary={modalProp.modalRenameEmp.salary}
-						onRenameNameCompany={this.onRenameNameCompany}
-						/>
-				</div>
-			);
-		} else if(app === 'viewCompany') {
-
-		} else {
-			return(
-				<Modal modalName={modalProp.modalName}
-					onRenameEmp={this.onRenameEmp}
-					onModal={this.onModal}
-					name={modalProp.modalRenameEmp.name} 
-					salary={modalProp.modalRenameEmp.salary}
-					onChangeApp={this.onChangeApp}
+						onChangeApp={this.onChangeApp}
 					/>
-			)
-		}
+				)}
+
+			</div>
+		);
 	}
 }
 
