@@ -1,5 +1,17 @@
 .app {
     margin: 0 auto;
     max-width: 1000px;
-  }
+}
+
+.button_menu {
+	background-color: #3d5a80;
+	border: none;
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	color: #fff;
+	width: 140px;
+	height: 40px;
+	border-radius: 5px;
+}
   

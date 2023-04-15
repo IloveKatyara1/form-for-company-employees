@@ -2,7 +2,7 @@ import EmployeesListItem from "../employees-list-item/employees-list-item";
 
 import './employees-list.css';
 
-const EmployeesList = ({data, onDelete, onProps, onModal}) => {
+const EmployeesList = ({data, onDelete, onProps, onModalEmp}) => {
     const employeesItem = data.map(item => {
         const {id, ...propsItem} = item;
 
@@ -11,14 +11,14 @@ const EmployeesList = ({data, onDelete, onProps, onModal}) => {
                 {...propsItem}
                 onDelete={() => onDelete(id)} 
                 onProps={(e) => onProps(id, e.currentTarget.getAttribute('data-toggle'))} 
-                onModal={() => onModal('modalRenameEmp', id, item.name, item.earnings)}/> 
+                onModalEmp={() => onModalEmp('modalRenameEmp', id, item.name, item.earnings)}/> 
     })
 
     return (
         <ul className="app-list list-group">
             {data.length !== 0 ? employeesItem : (
                 <div className="nothing">
-                    <h2>here is nothing add new emploe</h2>
+                    <h2>here is nothing add new emploee</h2>
                 </div>
             )}
         </ul>

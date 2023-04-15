@@ -41,6 +41,9 @@ class EmployeesAddForm extends Component {
                     <button type="submit"
                             className="btn btn-outline-light"
                             onClick={(e) => {
+                                e.preventDefault();
+                                if(!name.trim() || !+salary.trim() || salary < 0) return
+
                                 addNewItem(e, name, salary);
                                 this.setState(({name, salary}) => ({
                                     name: '',

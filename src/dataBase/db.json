@@ -1,0 +1,16 @@
+{
+  "createdCompany": {
+    "7567": {
+      "maxId": 1,
+      "employees": [
+        {
+          "name": "7567",
+          "earnings": "57",
+          "increase": false,
+          "like": false,
+          "id": 1
+        }
+      ]
+    }
+  }
+}

@@ -11,6 +11,7 @@ class Modal extends Component {
                 salary: null,
                 nameComopany: null
             },
+            massege: ''
         }
     }
 
@@ -19,7 +20,7 @@ class Modal extends Component {
 
     onCloseModal = () => {
         if(this.canClose) {
-            this.props.onModal('none')
+            this.props.onModalEmp('none')
 
             this.setState(({inputs}) => ({
                 inputs: {
@@ -28,23 +29,18 @@ class Modal extends Component {
                     nameComopany: null
                 }
             }))
+            this.massege = ''
         }
     }
 
     render() {
-        const {modalName, onRenameEmp, onChangeApp, onRenameNameCompany} = this.props;
+        const {modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, moreThenZeroEmp} = this.props;
 
         let clazz = `modal`
 
-        if(modalName === 'selectAction' || modalName === 'modalRenameNameCompany') {
+        if(modalName === 'selectAction' || modalName === 'modalRenameNameCompany' || modalName === 'saveCompany' || modalName ==='reportModal') {
             clazz = 'modal ' + modalName
         }
-
-        const dataBtns = [
-            {placeHolder: 'view company', key: 'viewCompany', modalName: 'modal_selectAction'},
-            {placeHolder: 'or', isP: true},
-            {placeHolder: 'create company', key: 'createCompany', modalName: 'modalRenameNameCompany'},
-        ]
 
         const onChangeValue = (e) => {
             const { name, value } = e.target;
@@ -88,26 +84,25 @@ class Modal extends Component {
                             </h4>
                             <hr />
                             <div className="btn-group">
-                                {
-                                    dataBtns.map((btn, i) => {
-                                        if(btn.isP) return <p key={i}>{btn.placeHolder}</p>
-
-                                        const clazz = this.props.active === btn.key ? 'btn-light' : '';
-                
-                                        return (
-                                            <button type="button"
-                                                className={`btn ${clazz}`}
-                                                key={btn.key}
-                                                onClick={() => {
-                                                    onChangeApp(btn.key, btn.modalName)
-                                                    this.cantClose = true;
-                                                }}
-                                            >
-                                                {btn.placeHolder}
-                                            </button>
-                                        )
-                                    })
-                                }
+                                <button type="button"
+                                    className={`btn`}
+                                    onClick={() => {
+                                        onChangeApp('viewCompany', 'modal_selectAction')
+                                        this.cantClose = true;
+                                    }}
+                                >
+                                    view company
+                                </button>
+                                <p>or</p>
+                                <button type="button"
+                                    className={`btn`}
+                                    onClick={() => {
+                                        onChangeApp('createCompany', 'modalRenameNameCompany')
+                                        this.cantClose = true;
+                                    }}
+                                >
+                                    create company
+                                </button>
                             </div>
                         </>
                     )} {modalName === 'modalRenameEmp' && (
@@ -132,7 +127,7 @@ class Modal extends Component {
                                 <button type="submit"
                                     className="btn btn-outline-light blue"
                                     onClick={(e) => {
-                                        onRenameEmp(e, name || makeInputDefault('name'), salary > 0 ? salary : makeInputDefault('salary') || makeInputDefault('salary'));
+                                        onRenameEmp(e, name || makeInputDefault('name'), salary > 0 ? salary : makeInputDefault('salary'));
                                         this.onCloseModal();
                                     }}
                                 >
@@ -161,12 +156,12 @@ class Modal extends Component {
                             <button type="submit"
                                 className="btn btn-outline-light blue"
                                 onClick={() => {
-                                    if(!nameComopany) return
+                                    if(!nameComopany && !this.props.nameCompany) return
 
                                     this.canClose = true;
                                     this.cantClose = false;
 
-                                    onRenameNameCompany(nameComopany)
+                                    onRenameNameCompany(nameComopany || this.props.nameCompany)
                                     this.onCloseModal();
                                 }}
                             >
@@ -178,6 +173,29 @@ class Modal extends Component {
                             >
                                 cancel
                             </button>
+                        </>
+                    )} {modalName === 'saveCompany' && ( 
+                        <>
+                            <h4>do you want to save your company?</h4>
+                            <hr />
+                            <div className="btn-group">
+                                <button onClick={postCompany}>
+                                    Yes, I want to save
+                                </button>
+                                <button onClick={() => onChangeApp('selectAction', 'selectAction')}>
+                                    No, I don't want to save
+                                </button>
+                                <button onClick={this.onCloseModal}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </>
+                    )} {modalName === 'reportModal' && (
+                        <>
+                            {moreThenZeroEmp ? this.canClose = false : this.canClose = true}
+                            {massege}
+                            <hr />
+                            <button onClick={() => moreThenZeroEmp ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()}>ok</button>
                         </>
                     )}
                 </div>

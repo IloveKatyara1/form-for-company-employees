@@ -1,7 +1,7 @@
 import './employees-list-item.css';
 
 const EmployeesListItem = (props) => {
-    const {name, earnings, onDelete, increase, like, onProps, onModal} = props;
+    const {name, earnings, onDelete, increase, like, onProps, onModalEmp} = props;
 
     let needPremium = 'list-group-item d-flex justify-content-between';
 
@@ -16,12 +16,12 @@ const EmployeesListItem = (props) => {
         <li className={needPremium}>
             <button className="list-group-item-label"
                 onClick={onProps}
-                data-toggle="like">{name}</button>
-            <span className="list-group-item-input">{earnings + '$'}</span>
+                data-toggle="like">{40 <= name.length ? name.slice(0, 40) + '...' : name}</button>
+            <span className="list-group-item-input">{15 <= earnings.length ? earnings.slice(0, 15) + '...$' : earnings + '$'}</span>
             <div className='d-flex justify-content-center align-items-center'>
                 <button type="button"
                     className="btn-pen btn-sm "
-                    onClick={onModal}>
+                    onClick={onModalEmp}>
                     <i className="fa-sharp fa-solid fa-pen"></i>
                 </button>
                 <button type="button"

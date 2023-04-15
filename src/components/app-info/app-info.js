@@ -5,7 +5,7 @@ const AppInfo = (props) => {
 
     return (
         <div className="app-info">
-            <h1>Сотрудники в компании: {nameCompany} 
+            <h1>Сотрудники в компании: {32 <= nameCompany.length ? nameCompany.slice(0, 32) + '...' : nameCompany} 
                 <button type="button"
                     className="btn-pen btn-sm "
                     onClick={onChangeModal}>

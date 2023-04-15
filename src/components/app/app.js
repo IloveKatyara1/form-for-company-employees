@@ -6,18 +6,16 @@ import AppFilter from '../app-filter/app-filter';
 import EmployeesList from '../employees-list/employees-list';
 import EmployeesAddForm from '../employees-add-form/employees-add-form';
 import Modal from '../modal/modal';
+import {postData} from '../../services/server'
 
 import './app.css';
+import spiner from '../../icons/spinner.svg'
 
 class App extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			data: [
-				{name: 'John S.', earnings: 2000, increase: true, like: true, id: 1},
-				{name: 'Nazar T.', earnings: 20000, increase: true, like: false, id: 2},
-				{name: 'Tom A.', earnings: 5000, increase: false, like: false, id: 3},
-			], 
+			dataNewCompany: [], 
 			term: '', 
 			filter: 'all',
 			modalProp: {
@@ -28,34 +26,32 @@ class App extends Component {
 					salary: ''
 				},
 			},
-			app: 'selectAction'
+			app: 'selectAction',
+			massege: ''
 		}
 
-		this.maxId = this.state.data.length;
+		this.maxId = this.state.dataNewCompany.length;
 		this.nameCompany = '';
+		this.moreThenZeroEmp = true
 	}
 
 	onDelete = (id) => {
-		this.setState(({data}) => ({
-			data: data.filter(obj => obj.id !== id)
+		this.setState(({dataNewCompany}) => ({
+			dataNewCompany: dataNewCompany.filter(obj => obj.id !== id)
 		}))
 	}
 
 	addNewItem = (e, name, earnings) => {
-		e.preventDefault();
-                                
-		if(!name.trim() || !earnings.trim()) return
-
 		this.maxId += 1
 
-		this.setState(({data}) => ({
-			data: [...data, {name, earnings, increase: false, like: false, id: this.maxId}]
+		this.setState(({dataNewCompany}) => ({
+			dataNewCompany: [...dataNewCompany, {name, earnings, increase: false, like: false, id: this.maxId}]
 		}))
 	}
 
 	onProps = (id, name) => {
-		this.setState(({data}) => ({
-			data: data.map(obj => {
+		this.setState(({dataNewCompany}) => ({
+			dataNewCompany: dataNewCompany.map(obj => {
 				if(obj.id === id) {
 					return {...obj, [name]: !obj[name]}
 				}
@@ -64,9 +60,9 @@ class App extends Component {
 		}))
 	}
 
-	searchEmp = (data, term) => {
+	searchEmp = (data, term, nameData) => {
 		if(term.length === 0) {
-			return this.state.data
+			return this.state[nameData]
 		}
 
 		return data.filter(emp => emp.name.indexOf(term) > -1)
@@ -82,15 +78,15 @@ class App extends Component {
 
 	onChangeFilter = (filter) => this.setState({filter})
 
-	onModal = (modalName, idRename, name, salary) => this.setState(({modalProp}) => ({
+	onModalEmp = (modalName, idRename, name, salary) => this.setState(({modalProp}) => ({
 		modalProp: {modalName, modalRenameEmp: {idRename, name, salary}} 
 	}))
 
 	onRenameEmp = (e, name, earnings) => {
 		e.preventDefault()
 
-		this.setState(({data}) => ({
-			data: data.map(element => {
+		this.setState(({dataNewCompany}) => ({
+			dataNewCompany: dataNewCompany.map(element => {
 				if(element.id === this.state.modalProp.modalRenameEmp.idRename) {
 					return {...element, name, earnings}
 				}
@@ -109,6 +105,46 @@ class App extends Component {
 		app
 	}))
 
+	changeMassege = (massege) => this.setState(({massege}))
+
+	postCompany = () => {
+		if(this.state.dataNewCompany.length === 0) {
+			this.moreThenZeroEmp = false
+
+			this.changeMassege(<h4>you dont have any employees</h4>)
+			this.onChangeModal('reportModal')
+			return
+		}
+
+		this.moreThenZeroEmp = true
+
+		this.changeMassege(<img src={spiner} alt="spiner" />)
+		this.onChangeModal('reportModal')
+
+		postData('http://localhost:3000/createdCompany', JSON.stringify({
+			[this.nameCompany]: {
+			  	maxId: this.maxId,
+			  	employees: [...this.state.dataNewCompany]
+			}
+		}))
+		.then((res) => console.log(res))
+		.then(() => {
+			this.nameCompany = ''
+
+			this.setState(({
+				...this.state,
+				dataNewCompany: [], 
+				term: '', 
+				filter: 'all',
+			}))
+		})
+		.then(() => this.changeMassege(<h4>data was send</h4>))
+		.catch(() => {
+			this.moreThenZeroEmp = false
+			this.changeMassege(<h4>something went wrong</h4>)
+		})
+	}
+
 	onChangeModal = (modalName) => this.setState(({modalProp}) => ({
 		modalProp: {
 			...modalProp,
@@ -120,21 +156,20 @@ class App extends Component {
 		this.nameCompany = nameCompany;
 		this.render();
 	}
-	
 
 	canRenderInfoApp = false
 
 	render() {		
-		const {data, term, filter, modalProp, app} = this.state;
-		const filtredData = this.filterSetings(this.searchEmp(data, term), filter)
-		const premium = data.filter(elem => elem.increase).length;
+		const {dataNewCompany, term, filter, modalProp, app, massege} = this.state;
+		const filtredData = this.filterSetings(this.searchEmp(dataNewCompany, term, 'dataNewCompany'), filter)
+		const premium = dataNewCompany.filter(elem => elem.increase).length;
 
 		return (	
 			<div className="app">
 				{app === 'createCompany' && (
 					<>
 						<AppInfo 
-							dataLength={data.length}
+							dataLength={dataNewCompany.length}
 							premium={premium}
 							nameCompany={this.nameCompany}
 							onChangeModal={() => this.onChangeModal('modalRenameNameCompany')}	
@@ -149,18 +184,27 @@ class App extends Component {
 							data={filtredData} 
 							onDelete={this.onDelete} 
 							onProps={this.onProps} 
-							onModal={this.onModal}/>
+							onModalEmp={this.onModalEmp}/>
 						<EmployeesAddForm addNewItem={this.addNewItem}/>
 						<Modal 
 							modalName={modalProp.modalName}
 							onRenameEmp={this.onRenameEmp}
-							onModal={this.onModal}
+							onModalEmp={this.onModalEmp}
 							name={modalProp.modalRenameEmp.name} 
 							salary={modalProp.modalRenameEmp.salary}
 							nameCompany={this.nameCompany}
 							onRenameNameCompany={this.onRenameNameCompany}
 							onChangeApp={this.onChangeApp}
+							postCompany={this.postCompany}
+							massege={massege}
+							moreThenZeroEmp={this.moreThenZeroEmp}
 						/>
+						<button
+							className='button button_menu'
+							onClick={() => this.onChangeModal('saveCompany')}
+						>
+							change action
+						</button>
 					</>
 				)} {app === 'viewCompany' && (
 					<>
@@ -169,13 +213,12 @@ class App extends Component {
 				)} {app === 'selectAction' && (
 					<Modal modalName={modalProp.modalName}
 						onRenameEmp={this.onRenameEmp}
-						onModal={this.onModal}
+						onModalEmp={this.onModalEmp}
 						name={modalProp.modalRenameEmp.name} 
 						salary={modalProp.modalRenameEmp.salary}
 						onChangeApp={this.onChangeApp}
 					/>
 				)}
-
 			</div>
 		);
 	}

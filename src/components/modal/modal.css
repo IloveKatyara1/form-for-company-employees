@@ -46,7 +46,7 @@
 
 .blue {
     margin-top: 10px;
-    background-color: blue;
+    background-color: #3d5a80;
     width: 350px;
 }
 
@@ -57,4 +57,36 @@
 
 .modalRenameNameCompany {
     height: 218px;
+}
+
+.saveCompany {
+    height: 194px;
+}
+
+.saveCompany button {
+    color: #fff;
+    width: 110px;
+}
+
+.saveCompany button:nth-child(1) {
+    background-color: green;
+}
+
+.saveCompany button:nth-child(2) {
+    background-color: red;
+}
+
+.saveCompany button:nth-child(3) {
+    background-color: #3d5a80;
+}
+
+.reportModal {
+    height: 132px;
+}
+
+.reportModal button {
+    width: 100%;
+    height: 40px;
+    background-color: #3d5a80;
+    color: #fff;
 }
