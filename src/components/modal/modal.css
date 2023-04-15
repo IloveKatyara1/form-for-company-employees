@@ -52,7 +52,7 @@
 
 .selectAction {
     height: 155px;
-    width: 370px;  
+    max-width: 530px;
 }
 
 .modalRenameNameCompany {

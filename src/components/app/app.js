@@ -27,13 +27,16 @@ class App extends Component {
 				},
 			},
 			app: 'selectAction',
-			massege: ''
+			massege: '',
+			wasSaved: false,
 		}
 
-		this.maxId = this.state.dataNewCompany.length;
+		this.maxId = 0;
 		this.nameCompany = '';
 		this.moreThenZeroEmp = true
 	}
+
+	oldData = {}
 
 	onDelete = (id) => {
 		this.setState(({dataNewCompany}) => ({
@@ -121,28 +124,36 @@ class App extends Component {
 		this.changeMassege(<img src={spiner} alt="spiner" />)
 		this.onChangeModal('reportModal')
 
-		postData('http://localhost:3000/createdCompany', JSON.stringify({
+		this.oldData = {
+			...this.oldData,
 			[this.nameCompany]: {
-			  	maxId: this.maxId,
-			  	employees: [...this.state.dataNewCompany]
+				maxId: this.maxId,
+				employees: [...this.state.dataNewCompany]
 			}
-		}))
+		}
+
+		let text;
+
+		postData('http://localhost:3000/createdCompany', JSON.stringify(this.oldData))
 		.then((res) => console.log(res))
-		.then(() => {
+		.then(() => text = 'data was send')
+		.catch(() => {
+			this.moreThenZeroEmp = false
+			text = 'something went wrong';
+		})
+		.finally(() => {
 			this.nameCompany = ''
+			this.maxId = 0;
 
 			this.setState(({
 				...this.state,
 				dataNewCompany: [], 
 				term: '', 
 				filter: 'all',
+				wasSaved: true
 			}))
 		})
-		.then(() => this.changeMassege(<h4>data was send</h4>))
-		.catch(() => {
-			this.moreThenZeroEmp = false
-			this.changeMassege(<h4>something went wrong</h4>)
-		})
+		.finally(() => this.changeMassege(<h4>{text}</h4>))
 	}
 
 	onChangeModal = (modalName) => this.setState(({modalProp}) => ({
@@ -160,7 +171,7 @@ class App extends Component {
 	canRenderInfoApp = false
 
 	render() {		
-		const {dataNewCompany, term, filter, modalProp, app, massege} = this.state;
+		const {dataNewCompany, term, filter, modalProp, app, massege, wasSaved} = this.state;
 		const filtredData = this.filterSetings(this.searchEmp(dataNewCompany, term, 'dataNewCompany'), filter)
 		const premium = dataNewCompany.filter(elem => elem.increase).length;
 
@@ -217,6 +228,7 @@ class App extends Component {
 						name={modalProp.modalRenameEmp.name} 
 						salary={modalProp.modalRenameEmp.salary}
 						onChangeApp={this.onChangeApp}
+						wasSaved={wasSaved}
 					/>
 				)}
 			</div>

@@ -1,13 +1,37 @@
 {
   "createdCompany": {
-    "7567": {
+    "64765": {
       "maxId": 1,
       "employees": [
         {
-          "name": "7567",
-          "earnings": "57",
+          "name": "23423",
+          "earnings": "44324",
           "increase": false,
           "like": false,
+          "id": 1
+        }
+      ]
+    },
+    "213213": {
+      "maxId": 1,
+      "employees": [
+        {
+          "name": "3213",
+          "earnings": "213",
+          "increase": false,
+          "like": false,
+          "id": 1
+        }
+      ]
+    },
+    "Fast Mechanism": {
+      "maxId": 1,
+      "employees": [
+        {
+          "name": "543",
+          "earnings": "5345",
+          "increase": true,
+          "like": true,
           "id": 1
         }
       ]

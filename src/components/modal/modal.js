@@ -1,3 +1,5 @@
+
+
 import { Component } from 'react';
 
 import './modal.css'
@@ -34,13 +36,9 @@ class Modal extends Component {
     }
 
     render() {
-        const {modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, moreThenZeroEmp} = this.props;
+        const {modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, moreThenZeroEmp, wasSaved} = this.props;
 
-        let clazz = `modal`
-
-        if(modalName === 'selectAction' || modalName === 'modalRenameNameCompany' || modalName === 'saveCompany' || modalName ==='reportModal') {
-            clazz = 'modal ' + modalName
-        }
+        let clazz = `modal ` + modalName
 
         const onChangeValue = (e) => {
             const { name, value } = e.target;
@@ -103,6 +101,16 @@ class Modal extends Component {
                                 >
                                     create company
                                 </button>
+                                {wasSaved && (
+                                    <>
+                                        <p>or</p>
+                                        <button type="button"
+                                            className={`btn`}
+                                        >
+                                            view your company
+                                        </button>
+                                    </>
+                                )}
                             </div>
                         </>
                     )} {modalName === 'modalRenameEmp' && (
