@@ -1,10 +1,10 @@
+import React from 'react'
 
-
-import { Component } from 'react';
+import Select from 'react-select'
 
 import './modal.css'
 
-class Modal extends Component {
+class Modal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,12 +13,13 @@ class Modal extends Component {
                 salary: null,
                 nameComopany: null
             },
-            massege: ''
+            massege: '',
         }
     }
 
     canClose = true;
     cantClose = true;
+    elemActive;
 
     onCloseModal = () => {
         if(this.canClose) {
@@ -36,7 +37,7 @@ class Modal extends Component {
     }
 
     render() {
-        const {modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, moreThenZeroEmp, wasSaved} = this.props;
+        const {showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
 
         let clazz = `modal ` + modalName
 
@@ -106,6 +107,7 @@ class Modal extends Component {
                                         <p>or</p>
                                         <button type="button"
                                             className={`btn`}
+                                            onClick={() => onChangeModal('chooseCompany')}
                                         >
                                             view your company
                                         </button>
@@ -200,10 +202,22 @@ class Modal extends Component {
                         </>
                     )} {modalName === 'reportModal' && (
                         <>
-                            {moreThenZeroEmp ? this.canClose = false : this.canClose = true}
+                            {canCloseReportModal ? this.canClose = false : this.canClose = true}
                             {massege}
                             <hr />
-                            <button onClick={() => moreThenZeroEmp ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()}>ok</button>
+                            <button onClick={() => canCloseReportModal ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()}>ok</button>
+                        </>
+                    )} {modalName === 'chooseCompany' && (
+                        <>
+                            <h4>choose company</h4>
+                            <hr />
+                            <Select options={namesCompany} onChange={(elem) => this.elemActive = elem.value}/>
+                            <button type="submit"
+                                className="btn btn-outline-light blue"
+                                onClick={(e) => this.elemActive ? showCompany(this.elemActive) : ''}
+                            >
+                                view
+                            </button>
                         </>
                     )}
                 </div>

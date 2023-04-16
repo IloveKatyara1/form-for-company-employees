@@ -29,14 +29,17 @@ class App extends Component {
 			app: 'selectAction',
 			massege: '',
 			wasSaved: false,
+			namesCompany: '',
+			id: 1
 		}
 
 		this.maxId = 0;
 		this.nameCompany = '';
-		this.moreThenZeroEmp = true
+		this.canCloseReportModal = true
+		this.id = 1
 	}
 
-	oldData = {}
+	oldData = []
 
 	onDelete = (id) => {
 		this.setState(({dataNewCompany}) => ({
@@ -110,50 +113,106 @@ class App extends Component {
 
 	changeMassege = (massege) => this.setState(({massege}))
 
-	postCompany = () => {
+	postCompany = () => {	
+		let wasRepeated;
+
 		if(this.state.dataNewCompany.length === 0) {
-			this.moreThenZeroEmp = false
+			this.canCloseReportModal = false
 
 			this.changeMassege(<h4>you dont have any employees</h4>)
 			this.onChangeModal('reportModal')
 			return
 		}
 
-		this.moreThenZeroEmp = true
+		this.oldData.forEach((obj, i) => {
+			if(obj.nameCompany === this.nameCompany) {
+				this.canCloseReportModal = false
+				wasRepeated = true
 
-		this.changeMassege(<img src={spiner} alt="spiner" />)
-		this.onChangeModal('reportModal')
-
-		this.oldData = {
-			...this.oldData,
-			[this.nameCompany]: {
-				maxId: this.maxId,
-				employees: [...this.state.dataNewCompany]
+				this.changeMassege(<h4>you already have one company with that name</h4>)
+				this.onChangeModal('reportModal')
 			}
+		})
+
+		if (!wasRepeated) {
+			this.canCloseReportModal = true
+
+			this.changeMassege(<img src={spiner} alt="spiner" />)
+			this.onChangeModal('reportModal')
+	
+			let repeated;
+	
+			this.oldData.forEach((obj, i) => {
+				if(obj.id === this.state.id) {
+					this.oldData[i] =  {
+						nameCompany: this.nameCompany,
+						maxId: this.maxId,
+						employees: [...this.state.dataNewCompany],
+						id: this.state.id
+					}
+	
+					repeated = true
+				}
+			})
+	
+			if(!repeated) {
+				this.oldData = [
+					...this.oldData,
+					{
+						nameCompany: this.nameCompany,
+						maxId: this.maxId,
+						employees: [...this.state.dataNewCompany],
+						id: this.state.id
+					}
+				]
+			}
+	
+			let text;
+	
+			postData('http://localhost:3000/createdCompany', JSON.stringify(this.oldData))
+			.then((res) => console.log(res))
+			.then(() => text = 'data was send')
+			.then(() => {
+				this.nameCompany = ''
+				this.maxId = 0;
+				if(!repeated) this.id += 1
+	
+				this.setState(({
+					...this.state,
+					dataNewCompany: [], 
+					term: '', 
+					filter: 'all',
+					wasSaved: true,
+					namesCompany: this.oldData.map(obj => ({ value: obj.nameCompany, label: obj.nameCompany })),
+					id: this.id
+				}))
+			})
+			.catch(() => {
+				this.canCloseReportModal = false
+				text = 'something went wrong';
+			})
+			.finally(() => this.changeMassege(<h4>{text}</h4>))
 		}
+	}
 
-		let text;
+	showCompany = (name) => {
+		const dataCompany = this.oldData.filter(obj => obj.nameCompany === name)[0];
 
-		postData('http://localhost:3000/createdCompany', JSON.stringify(this.oldData))
-		.then((res) => console.log(res))
-		.then(() => text = 'data was send')
-		.catch(() => {
-			this.moreThenZeroEmp = false
-			text = 'something went wrong';
-		})
-		.finally(() => {
-			this.nameCompany = ''
-			this.maxId = 0;
+		this.nameCompany = name;
+		this.maxId = dataCompany.maxId
 
-			this.setState(({
-				...this.state,
-				dataNewCompany: [], 
-				term: '', 
-				filter: 'all',
-				wasSaved: true
-			}))
-		})
-		.finally(() => this.changeMassege(<h4>{text}</h4>))
+		this.setState(({
+			...this.state,
+			dataNewCompany: [...dataCompany.employees], 
+			term: '', 
+			filter: 'all',
+			modalProp: {
+				...this.state.modalProp,
+				modalName: 'none',
+			},
+			app: 'createCompany',
+			id: dataCompany.id
+		}))
 	}
 
 	onChangeModal = (modalName) => this.setState(({modalProp}) => ({
@@ -171,7 +230,7 @@ class App extends Component {
 	canRenderInfoApp = false
 
 	render() {		
-		const {dataNewCompany, term, filter, modalProp, app, massege, wasSaved} = this.state;
+		const {dataNewCompany, term, filter, modalProp, app, massege, wasSaved, namesCompany} = this.state;
 		const filtredData = this.filterSetings(this.searchEmp(dataNewCompany, term, 'dataNewCompany'), filter)
 		const premium = dataNewCompany.filter(elem => elem.increase).length;
 
@@ -208,7 +267,7 @@ class App extends Component {
 							onChangeApp={this.onChangeApp}
 							postCompany={this.postCompany}
 							massege={massege}
-							moreThenZeroEmp={this.moreThenZeroEmp}
+							canCloseReportModal={this.canCloseReportModal}
 						/>
 						<button
 							className='button button_menu'
@@ -229,6 +288,9 @@ class App extends Component {
 						salary={modalProp.modalRenameEmp.salary}
 						onChangeApp={this.onChangeApp}
 						wasSaved={wasSaved}
+						namesCompany={namesCompany}
+						onChangeModal={this.onChangeModal}
+						showCompany={this.showCompany}
 					/>
 				)}
 			</div>
