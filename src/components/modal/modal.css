@@ -42,11 +42,13 @@
 .red {
     background-color: red;
     width: 350px;
+    color: #fff;
 }
 
 .blue {
     margin-top: 10px;
     background-color: #3d5a80;
+    color: #fff;
     width: 350px;
 }
 

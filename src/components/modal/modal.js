@@ -3,6 +3,7 @@ import React from 'react'
 import Select from 'react-select'
 
 import './modal.css'
+import spiner from '../../icons/spinner.svg'
 
 class Modal extends React.Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class Modal extends React.Component {
             inputs: {
                 name: null,
                 salary: null,
-                nameComopany: null
+                nameCompany: null
             },
             massege: '',
         }
@@ -20,6 +21,7 @@ class Modal extends React.Component {
     canClose = true;
     cantClose = true;
     elemActive;
+    nameData;
 
     onCloseModal = () => {
         if(this.canClose) {
@@ -29,7 +31,7 @@ class Modal extends React.Component {
                 inputs: {
                     name: null,
                     salare: null,
-                    nameComopany: null
+                    nameCompany: null
                 }
             }))
             this.massege = ''
@@ -37,7 +39,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        const {showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
+        const {getViewCompanyData, makeDefaultProps, namesCompanyView, onCancelLoading, showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
 
         let clazz = `modal ` + modalName
 
@@ -62,7 +64,7 @@ class Modal extends React.Component {
             return this.props[nameFnc]
         }
 
-        const {name, salary, nameComopany} = this.state.inputs;
+        const {name, salary, nameCompany} = this.state.inputs;
 
         if(modalName === 'none') return;
 
@@ -86,8 +88,9 @@ class Modal extends React.Component {
                                 <button type="button"
                                     className={`btn`}
                                     onClick={() => {
-                                        onChangeApp('viewCompany', 'modal_selectAction')
                                         this.cantClose = true;
+                                        this.nameData = 'viewCompanyData'
+                                        namesCompanyView ? onChangeModal('chooseCompany') : getViewCompanyData()
                                     }}
                                 >
                                     view company
@@ -107,7 +110,10 @@ class Modal extends React.Component {
                                         <p>or</p>
                                         <button type="button"
                                             className={`btn`}
-                                            onClick={() => onChangeModal('chooseCompany')}
+                                            onClick={() => {
+                                                onChangeModal('chooseCompany')
+                                                this.nameData = 'oldData'
+                                            }}
                                         >
                                             view your company
                                         </button>
@@ -157,21 +163,21 @@ class Modal extends React.Component {
                             <h4>company name</h4>
                             <hr />
                             <input type="text" 
-                                    name='nameComopany'
+                                    name='nameCompany'
                                     placeholder='name company' 
                                     className='form-control new-post-label' 
                                     onChange={onChangeValue} 
-                                    value={nameComopany ?? this.props.nameCompany} 
+                                    value={nameCompany ?? this.props.nameCompany} 
                                 />
                             <button type="submit"
                                 className="btn btn-outline-light blue"
                                 onClick={() => {
-                                    if(!nameComopany && !this.props.nameCompany) return
+                                    if((!nameCompany || !nameCompany.trim()) && (!this.props.nameCompany || !this.props.nameCompany.trim())) return
 
                                     this.canClose = true;
                                     this.cantClose = false;
 
-                                    onRenameNameCompany(nameComopany || this.props.nameCompany)
+                                    onRenameNameCompany(nameCompany ? nameCompany.trim() : null || this.props.nameCompany.trim())
                                     this.onCloseModal();
                                 }}
                             >
@@ -192,7 +198,7 @@ class Modal extends React.Component {
                                 <button onClick={postCompany}>
                                     Yes, I want to save
                                 </button>
-                                <button onClick={() => onChangeApp('selectAction', 'selectAction')}>
+                                <button onClick={() => makeDefaultProps()}>
                                     No, I don't want to save
                                 </button>
                                 <button onClick={this.onCloseModal}>
@@ -203,20 +209,48 @@ class Modal extends React.Component {
                     )} {modalName === 'reportModal' && (
                         <>
                             {canCloseReportModal ? this.canClose = false : this.canClose = true}
-                            {massege}
+
+                            <h4>{massege}</h4>
                             <hr />
-                            <button onClick={() => canCloseReportModal ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()}>ok</button>
+                            <button onClick={() => {
+                                canCloseReportModal ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()
+                            }}
+                            >
+                                ok
+                            </button>
                         </>
                     )} {modalName === 'chooseCompany' && (
                         <>
+                            {this.canClose = false}
+
                             <h4>choose company</h4>
                             <hr />
-                            <Select options={namesCompany} onChange={(elem) => this.elemActive = elem.value}/>
-                            <button type="submit"
-                                className="btn btn-outline-light blue"
-                                onClick={(e) => this.elemActive ? showCompany(this.elemActive) : ''}
+                            <Select options={this.nameData === 'viewCompanyData' ? namesCompanyView : namesCompany} onChange={(elem) => this.elemActive = elem.value}/>
+                            <button
+                                className="btn blue"
+                                onClick={(e) => showCompany(this.elemActive, this.nameData)}
                             >
                                 view
+                            </button>
+                            <button
+                                className="btn red"
+                                onClick={() => onChangeModal('selectAction')}
+                            >
+                                back
+                            </button>
+                        </>
+                    )} {modalName === 'loading' && (
+                        <>
+                            {this.canClose = false}
+
+                            <h4>loading...</h4>
+                            <img src={spiner} alt="spiner" />
+                            <hr />
+                            <button
+                                className="btn blue" 
+                                onClick={onCancelLoading}
+                            >
+                                cancel
                             </button>
                         </>
                     )}

@@ -79,3 +79,7 @@
 .btn-pen {
     color: #3d5a80;
 }
+
+.cursor_none {
+    cursor: auto !important;
+}

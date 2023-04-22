@@ -2,7 +2,7 @@ async function getData(url) {
     const res = await fetch(url);
 
     if (!res.ok) {
-        return Promise.reject(res.status);
+        return await Promise.reject(res.status);
     }
 
     return await res.json();
@@ -20,7 +20,7 @@ const postData = async (url, data) => {
     });
 
     if (!res.ok) {
-        return Promise.reject(res.status);
+        return await Promise.reject(res.status);
     }
 
     return await res.json();
