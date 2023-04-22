@@ -21,7 +21,6 @@ class Modal extends React.Component {
     canClose = true;
     cantClose = true;
     elemActive;
-    nameData;
 
     onCloseModal = () => {
         if(this.canClose) {
@@ -39,7 +38,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        const {getViewCompanyData, makeDefaultProps, namesCompanyView, onCancelLoading, showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
+        const {getViewCompanyData, nameData, changeNameData, makeDefaultProps, namesCompanyView, onCancelLoading, showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
 
         let clazz = `modal ` + modalName
 
@@ -89,7 +88,7 @@ class Modal extends React.Component {
                                     className={`btn`}
                                     onClick={() => {
                                         this.cantClose = true;
-                                        this.nameData = 'viewCompanyData'
+                                        changeNameData('viewCompanyData')
                                         namesCompanyView ? onChangeModal('chooseCompany') : getViewCompanyData()
                                     }}
                                 >
@@ -105,20 +104,20 @@ class Modal extends React.Component {
                                 >
                                     create company
                                 </button>
-                                {wasSaved && (
+                                {wasSaved ? (
                                     <>
                                         <p>or</p>
                                         <button type="button"
                                             className={`btn`}
                                             onClick={() => {
                                                 onChangeModal('chooseCompany')
-                                                this.nameData = 'oldData'
+                                                changeNameData('oldData')
                                             }}
                                         >
                                             view your company
                                         </button>
                                     </>
-                                )}
+                                ) : null}
                             </div>
                         </>
                     )} {modalName === 'modalRenameEmp' && (
@@ -212,23 +211,20 @@ class Modal extends React.Component {
 
                             <h4>{massege}</h4>
                             <hr />
-                            <button onClick={() => {
-                                canCloseReportModal ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()
-                            }}
-                            >
+                            <button onClick={() => canCloseReportModal ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()}>
                                 ok
                             </button>
                         </>
                     )} {modalName === 'chooseCompany' && (
                         <>
                             {this.canClose = false}
-
                             <h4>choose company</h4>
                             <hr />
-                            <Select options={this.nameData === 'viewCompanyData' ? namesCompanyView : namesCompany} onChange={(elem) => this.elemActive = elem.value}/>
+                            <Select options={nameData === 'viewCompanyData' ? namesCompanyView : namesCompany} 
+                            onChange={(elem) => this.elemActive = elem.value}/>
                             <button
                                 className="btn blue"
-                                onClick={(e) => showCompany(this.elemActive, this.nameData)}
+                                onClick={() => this.elemActive ? showCompany(this.elemActive, nameData) : null}
                             >
                                 view
                             </button>
