@@ -38,7 +38,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        const {getViewCompanyData, nameData, changeNameData, makeDefaultProps, namesCompanyView, onCancelLoading, showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
+        const {getViewCompanyData, doYouWantDeleteCompany, deleteCompany, nameData, changeNameData, makeDefaultProps, namesCompanyView, onCancelLoading, showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
 
         let clazz = `modal ` + modalName
 
@@ -234,6 +234,14 @@ class Modal extends React.Component {
                             >
                                 back
                             </button>
+                            {nameData === 'oldData' && (
+                                <button
+                                    className="btn red"
+                                    onClick={() => this.elemActive ? doYouWantDeleteCompany(this.elemActive) : null}
+                                >
+                                    delete
+                                </button>
+                            )} 
                         </>
                     )} {modalName === 'loading' && (
                         <>
@@ -247,6 +255,24 @@ class Modal extends React.Component {
                                 onClick={onCancelLoading}
                             >
                                 cancel
+                            </button>
+                        </>
+                    )} {modalName === 'deleteCompany' && (
+                        <>
+                            {this.canClose = false}
+                            <h4>Are you sure want to delete your company?</h4>
+                            <hr />
+                            <button
+                                className="btn blue" 
+                                onClick={() => onChangeModal('chooseCompany')}
+                            >
+                                cancel
+                            </button>
+                            <button
+                                className="btn red" 
+                                onClick={deleteCompany}
+                            >
+                                Yes
                             </button>
                         </>
                     )}

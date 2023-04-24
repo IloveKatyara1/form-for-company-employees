@@ -36,9 +36,9 @@ class App extends Component {
 		this.maxIdEmp = 0;
 		this.namesCompanyView = '';
 		this.canCloseReportModal = true
-		this.namesCompanyView = ''
 		this.dontWantSave = false
 		this.nameData = ''
+		this.nameCompanyDelete = ''
 	}
 
 	idMax = 1
@@ -216,6 +216,33 @@ class App extends Component {
 		}
 	}
 
+	doYouWantDeleteCompany = (nameCompanyDelete) => {
+		this.nameCompanyDelete = nameCompanyDelete;
+		this.onChangeModal('deleteCompany')
+	}
+
+	deleteCompany = () => {
+		this.canCloseReportModal = true
+		this.dontWantSave = false
+
+		this.onChangeModal('loading');
+
+		let text;
+
+		postData('http://localhost:3000/createdCompany', JSON.stringify(this.oldData.filter(company => company.nameCompany !== this.nameCompanyDelete)))
+		.then((res) => !this.dontWantSave ? console.log(res) : null)
+		.then(() => text = 'The company was deleted')
+		.then(() => !this.dontWantSave ?  this.oldData = this.oldData.filter(company => company.nameCompany !== this.nameCompanyDelete) : null)
+		.then(() => !this.dontWantSave ? this.namesCompanyView = this.viewCompanyData.map(obj => ({ value: obj.nameCompany, label: obj.nameCompany })) : null)
+		.catch(() => {
+			if(!this.dontWantSave) {
+				this.canCloseReportModal = false
+				text = 'something went wrong';
+			}
+		})
+		.finally(() => !this.dontWantSave ? this.changeMassege(text) : '')
+	}
+
 	showCompany = (name, nameData) => {
 		const dataCompany = this[nameData].filter(obj => obj.nameCompany === name)[0];
 		
@@ -389,6 +416,8 @@ class App extends Component {
 						onCancelLoading={this.onCancelLoading}
 						nameData={this.nameData}
 						changeNameData={this.changeNameData}
+						doYouWantDeleteCompany={this.doYouWantDeleteCompany}
+						deleteCompany={this.deleteCompany}
 					/>
 				)}
 			</div>
