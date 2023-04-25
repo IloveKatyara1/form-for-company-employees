@@ -38,7 +38,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        const {getViewCompanyData, doYouWantDeleteCompany, deleteCompany, nameData, changeNameData, makeDefaultProps, namesCompanyView, onCancelLoading, showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
+        const {getViewCompanyData, navForReportModal, doYouWantDeleteCompany, deleteCompany, nameData, changeNameData, makeDefaultProps, namesCompanyView, onCancelLoading, showCompany, modalName, onRenameEmp, onChangeApp, onRenameNameCompany, postCompany, massege, canCloseReportModal, wasSaved, namesCompany, onChangeModal} = this.props;
 
         let clazz = `modal ` + modalName
 
@@ -208,10 +208,10 @@ class Modal extends React.Component {
                     )} {modalName === 'reportModal' && (
                         <>
                             {canCloseReportModal ? this.canClose = false : this.canClose = true}
-
+                            {console.log(navForReportModal)}
                             <h4>{massege}</h4>
                             <hr />
-                            <button onClick={() => canCloseReportModal ? onChangeApp('selectAction', 'selectAction') : this.onCloseModal()}>
+                            <button onClick={() => canCloseReportModal ? onChangeApp('selectAction', navForReportModal || 'selectAction') : this.onCloseModal()}>
                                 ok
                             </button>
                         </>

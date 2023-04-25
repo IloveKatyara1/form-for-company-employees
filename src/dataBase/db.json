@@ -6,8 +6,8 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "5646456",
-            "earnings": "54645",
+            "name": "y65",
+            "earnings": "76",
             "increase": false,
             "like": false,
             "id": 1
@@ -22,8 +22,72 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "5646456",
-            "earnings": "54645",
+            "name": "7567",
+            "earnings": "56756",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "7567",
+            "earnings": "56756",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "7567",
+            "earnings": "56756",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546456",
+            "earnings": "456",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546456",
+            "earnings": "456",
             "increase": false,
             "like": false,
             "id": 1
@@ -36,8 +100,8 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "355435",
-            "earnings": "3454543",
+            "name": "6546",
+            "earnings": "54654",
             "increase": false,
             "like": false,
             "id": 1
@@ -53,24 +117,7 @@
         "employees": [
           {
             "name": "5435",
-            "earnings": "45334",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "56745",
-            "earnings": "64564",
+            "earnings": "34543",
             "increase": false,
             "like": false,
             "id": 1
@@ -85,233 +132,8 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "56745",
-            "earnings": "64564",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "56745",
-            "earnings": "64564",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "4353",
-            "earnings": "5435",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "6456",
-            "earnings": "5435",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "6456",
-            "earnings": "5435",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "6456",
-            "earnings": "5435",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "543",
-            "earnings": "5345",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "543",
-            "earnings": "5345",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "6456",
-            "earnings": "456456",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "6456",
-            "earnings": "456456",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "7657",
-            "earnings": "567",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "7657",
-            "earnings": "567",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "65465",
-            "earnings": "4646",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "6456",
-            "earnings": "546",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "6456",
-            "earnings": "546",
+            "name": "5435",
+            "earnings": "34543",
             "increase": false,
             "like": false,
             "id": 1
@@ -324,29 +146,837 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "54645",
+            "name": "5435",
+            "earnings": "435345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "34543",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "435345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "6",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "456",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "46546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "45654",
+            "earnings": "64",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "45654",
+            "earnings": "64",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "56345646",
+            "earnings": "6536",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "56345646",
+            "earnings": "6536",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "35",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "35",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "64",
+            "earnings": "5646",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "35",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "54654",
+            "earnings": "646",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "564365",
+            "earnings": "4645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "564365",
+            "earnings": "4645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "543543535",
+            "earnings": "43535",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "564365",
+            "earnings": "4645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "543543535",
+            "earnings": "43535",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      },
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "564365",
+            "earnings": "4645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "543543535",
+            "earnings": "43535",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "4564",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "4564",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "54645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "4564",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "54645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "6546456",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "456546",
+            "earnings": "4564",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "4564",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "54645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "4535",
+            "earnings": "53454",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "345345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "345345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "54654",
+            "earnings": "6464",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "345345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "54654",
+            "earnings": "6464",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast6545654",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "345345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "54654",
+            "earnings": "6464",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "67",
+            "earnings": "57567",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "456456",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "456456",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "46546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "46546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6456",
+            "earnings": "456456",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "546546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "546546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fas",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5646",
+            "earnings": "546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "546546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fas",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5646",
+            "earnings": "546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "64",
+            "earnings": "64",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "546546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fas",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5646",
+            "earnings": "546",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "64",
+            "earnings": "64",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      },
+      {
+        "nameCompany": "7",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "777",
+            "earnings": "777",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 4
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "645",
             "earnings": "6456",
             "increase": false,
             "like": false,
             "id": 1
           }
         ],
-        "id": 2
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "6456",
-            "earnings": "546",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
         "id": 1
       }
     ],
@@ -356,24 +986,8 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "534543",
-            "earnings": "5345",
-            "increase": false,
-            "like": false,
-            "id": 1
-          }
-        ],
-        "id": 1
-      }
-    ],
-    [
-      {
-        "nameCompany": "Fast Mechanism",
-        "maxIdEmp": 1,
-        "employees": [
-          {
-            "name": "534543",
-            "earnings": "5345",
+            "name": "645",
+            "earnings": "6456",
             "increase": false,
             "like": false,
             "id": 1
@@ -386,8 +1000,8 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "5435",
-            "earnings": "35435",
+            "name": "6546",
+            "earnings": "456",
             "increase": false,
             "like": false,
             "id": 1
@@ -402,8 +1016,8 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "534543",
-            "earnings": "5345",
+            "name": "765",
+            "earnings": "7567",
             "increase": false,
             "like": false,
             "id": 1
@@ -418,25 +1032,38 @@
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "6456",
-            "earnings": "54325",
+            "name": "765",
+            "earnings": "7567",
             "increase": false,
             "like": false,
             "id": 1
           }
         ],
         "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "8776",
+            "earnings": "8678",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
       }
     ],
-    [],
     [
       {
         "nameCompany": "Fast Mechanism",
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "4234",
-            "earnings": "54353",
+            "name": "42342",
+            "earnings": "34234",
             "increase": false,
             "like": false,
             "id": 1
@@ -445,24 +1072,138 @@
         "id": 1
       }
     ],
-    [],
     [
       {
         "nameCompany": "Fast Mechanism",
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "7657",
-            "earnings": "567",
+            "name": "42342",
+            "earnings": "34234",
             "increase": false,
             "like": false,
             "id": 1
           }
         ],
         "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5345",
+            "earnings": "3",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
       }
     ],
-    [],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "42342",
+            "earnings": "34234",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5345",
+            "earnings": "3",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast6",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "65464",
+            "earnings": "5645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "42342",
+            "earnings": "34234",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5345",
+            "earnings": "3",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast6",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "65464",
+            "earnings": "5645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      },
+      {
+        "nameCompany": "65465",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "45645",
+            "earnings": "6456",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 4
+      }
+    ],
     [
       {
         "nameCompany": "Fast Mechanism",
@@ -470,7 +1211,373 @@
         "employees": [
           {
             "name": "5435",
-            "earnings": "34535",
+            "earnings": "345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5345",
+            "earnings": "4354",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5435",
+            "earnings": "345",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "5345",
+            "earnings": "4354",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast6545654",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "456456",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "54645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "54645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "456",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "45645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "45645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "=",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "7567",
+            "earnings": "657567",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "45645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "45645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "=",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "7567",
+            "earnings": "657567",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "45645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "6546",
+            "earnings": "45645",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "=",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "7567",
+            "earnings": "657567",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "7868",
+            "earnings": "7686",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "7868",
+            "earnings": "7686",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "d",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "67876",
+            "earnings": "8768",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "8678",
+            "earnings": "67867",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "8678",
+            "earnings": "67867",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "9879",
+            "earnings": "798",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "465465",
             "increase": false,
             "like": false,
             "id": 1
@@ -482,12 +1589,12 @@
     [],
     [
       {
-        "nameCompany": "Fast Mechanism",
+        "nameCompany": "Fast",
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "54353",
-            "earnings": "45435",
+            "name": "546",
+            "earnings": "465465",
             "increase": false,
             "like": false,
             "id": 1
@@ -496,15 +1603,44 @@
         "id": 1
       }
     ],
-    [],
     [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "465465",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
       {
         "nameCompany": "Fast Mechanism",
         "maxIdEmp": 1,
         "employees": [
           {
-            "name": "654",
-            "earnings": "546456",
+            "name": "543",
+            "earnings": "535",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "465465",
             "increase": false,
             "like": false,
             "id": 1
@@ -513,8 +1649,145 @@
         "id": 1
       }
     ],
-    [],
-    []
+    [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "465465",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "543",
+            "earnings": "535",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 2,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "465465",
+            "increase": false,
+            "like": false,
+            "id": 1
+          },
+          {
+            "name": "6546",
+            "earnings": "4564",
+            "increase": false,
+            "like": false,
+            "id": 2
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "543",
+            "earnings": "535",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 2,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "465465",
+            "increase": false,
+            "like": false,
+            "id": 1
+          },
+          {
+            "name": "6546",
+            "earnings": "4564",
+            "increase": false,
+            "like": false,
+            "id": 2
+          }
+        ],
+        "id": 1
+      }
+    ],
+    [
+      {
+        "nameCompany": "Fast",
+        "maxIdEmp": 2,
+        "employees": [
+          {
+            "name": "546",
+            "earnings": "465465",
+            "increase": false,
+            "like": false,
+            "id": 1
+          },
+          {
+            "name": "6546",
+            "earnings": "4564",
+            "increase": false,
+            "like": false,
+            "id": 2
+          }
+        ],
+        "id": 1
+      },
+      {
+        "nameCompany": "Fast Mechanism",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "543",
+            "earnings": "535",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 2
+      },
+      {
+        "nameCompany": "Fast5435",
+        "maxIdEmp": 1,
+        "employees": [
+          {
+            "name": "765",
+            "earnings": "767",
+            "increase": false,
+            "like": false,
+            "id": 1
+          }
+        ],
+        "id": 3
+      }
+    ]
   ],
   "viewCompany": [
     {

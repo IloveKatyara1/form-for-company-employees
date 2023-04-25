@@ -39,6 +39,8 @@ class App extends Component {
 		this.dontWantSave = false
 		this.nameData = ''
 		this.nameCompanyDelete = ''
+		this.needCloseLoading = false;
+		this.navForReportModal = ''
 	}
 
 	idMax = 1
@@ -46,7 +48,10 @@ class App extends Component {
 	viewCompanyData = []
 
 	getViewCompanyData = () => {
+		this.navForReportModal = 'selectAction';
 		this.canCloseReportModal = true;
+		this.needCloseLoading = false;
+
 		this.onChangeModal('loading')
 
 		getData('http://localhost:3000/viewCompany')
@@ -152,6 +157,7 @@ class App extends Component {
 		if (!wasRepeatedNameCompany) {
 			this.canCloseReportModal = true
 			this.dontWantSave = false
+			this.needCloseLoading = true
 
 			this.onChangeModal('loading')
 	
@@ -170,8 +176,18 @@ class App extends Component {
 				}
 			})
 	
-			if(!repeated) {
-				this.oldData = [
+			let text;
+	
+			postData('http://localhost:3000/createdCompany', JSON.stringify([...this.oldData, {
+					nameCompany: this.state.nameCompany,
+					maxIdEmp: this.maxIdEmp,
+					employees: [...this.state.dataNewCompany],
+					id: this.state.id
+				}]))
+			.then((res) => !this.dontWantSave ? console.log(res) : null)
+			.then(() => text = 'data was send')
+			.then(() => {
+				if(!repeated && !this.dontWantSave) this.oldData = [
 					...this.oldData,
 					{
 						nameCompany: this.state.nameCompany,
@@ -180,27 +196,13 @@ class App extends Component {
 						id: this.state.id
 					}
 				]
-			}
-	
-			let text;
-	
-			postData('http://localhost:3000/createdCompany', JSON.stringify(this.oldData))
-			.then((res) => !this.dontWantSave ? console.log(res) : null)
-			.then(() => text = 'data was send')
+			})
 			.then(() => {
 				if(!this.dontWantSave) {
 					this.maxIdEmp = 0;
 					if(!repeated) this.idMax += 1
 		
-					this.setState(({
-						...this.state,
-						nameCompany: '',
-						dataNewCompany: [], 
-						term: '', 
-						filter: 'all',
-						namesCompany: this.oldData.map(obj => ({ value: obj.nameCompany, label: obj.nameCompany })),
-						id: this.idMax
-					}))
+					this.makeDefaultProps()
 				} else {
 					this.oldData = this.oldData.filter(obj => obj.id !== this.idMax)
 					postData('http://localhost:3000/createdCompany', JSON.stringify(this.oldData))
@@ -212,7 +214,7 @@ class App extends Component {
 					text = 'something went wrong';
 				} else this.oldData = this.oldData.filter(obj => obj.id !== this.idMax)
 			})
-			.finally(() => !this.dontWantSave ? this.changeMassege(text) : '')
+			.finally(() => !this.dontWantSave ? this.changeMassege(text) : null)
 		}
 	}
 
@@ -224,6 +226,7 @@ class App extends Component {
 	deleteCompany = () => {
 		this.canCloseReportModal = true
 		this.dontWantSave = false
+		this.needCloseLoading = false;
 
 		this.onChangeModal('loading');
 
@@ -233,7 +236,8 @@ class App extends Component {
 		.then((res) => !this.dontWantSave ? console.log(res) : null)
 		.then(() => text = 'The company was deleted')
 		.then(() => !this.dontWantSave ?  this.oldData = this.oldData.filter(company => company.nameCompany !== this.nameCompanyDelete) : null)
-		.then(() => !this.dontWantSave ? this.namesCompanyView = this.viewCompanyData.map(obj => ({ value: obj.nameCompany, label: obj.nameCompany })) : null)
+		.then(() => !this.dontWantSave ? this.setState({namesCompany: this.oldData.map(obj => ({ value: obj.nameCompany, label: obj.nameCompany }))}) : null)
+		.then(() => this.oldData.length ? this.navForReportModal = 'chooseCompany' : null)
 		.catch(() => {
 			if(!this.dontWantSave) {
 				this.canCloseReportModal = false
@@ -290,7 +294,13 @@ class App extends Component {
 
 	onCancelLoading = () => {
 		this.onChangeDontWantSave(true)
-		this.canCloseReportModal ? this.onChangeModal('selectAction') : this.onChangeModal('none')
+
+		if(this.needCloseLoading) {
+			this.onChangeModal('none')
+			return
+		}
+
+		this.onChangeModal('selectAction')
 	}
 
 	changeNameData = (nameData) => this.nameData = nameData
@@ -309,6 +319,7 @@ class App extends Component {
 							premium={premium}
 							nameCompany={nameCompany}
 							onChangeModal={() => this.onChangeModal('modalRenameNameCompany')}	
+							needBtns={true}
 						/>
 			
 						<div className="search-panel">
@@ -338,10 +349,14 @@ class App extends Component {
 							canCloseReportModal={this.canCloseReportModal}
 							makeDefaultProps={this.makeDefaultProps}
 							onCancelLoading={this.onCancelLoading}
+							navForReportModal={this.navForReportModal}
 						/>
 						<button
 							className='button button_menu'
-							onClick={() => this.onChangeModal('saveCompany')}
+							onClick={() => {
+								this.navForReportModal = 'selectAction'
+								this.onChangeModal('saveCompany')
+							}}
 						>
 							change action
 						</button>
@@ -349,9 +364,9 @@ class App extends Component {
 							<button
 								className='button button_menu button_change_company'
 								onClick={() => {
-									this.makeDefaultProps()
 									this.nameData = 'oldData';
-									this.onChangeApp('selectAction', 'chooseCompany')
+									this.navForReportModal = 'chooseCompany'
+									this.onChangeModal('saveCompany')
 								}}
 							>
 								change company
@@ -365,6 +380,7 @@ class App extends Component {
 							premium={premium}
 							nameCompany={nameCompany}
 							onChangeModal={() => this.onChangeModal('modalRenameNameCompany')}	
+							needBtns={false}
 						/>
 			
 						<div className="search-panel">
@@ -381,7 +397,7 @@ class App extends Component {
 						/>
 						<button
 							className='button button_menu'
-							onClick={() => this.makeDefaultProps()}
+							onClick={this.makeDefaultProps}
 						>
 							change action
 						</button>
@@ -418,6 +434,7 @@ class App extends Component {
 						changeNameData={this.changeNameData}
 						doYouWantDeleteCompany={this.doYouWantDeleteCompany}
 						deleteCompany={this.deleteCompany}
+						navForReportModal={this.navForReportModal}
 					/>
 				)}
 			</div>
