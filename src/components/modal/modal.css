@@ -92,3 +92,7 @@
     background-color: #3d5a80;
     color: #fff;
 }
+
+.chooseCompany button {
+    margin: 3px auto;
+}

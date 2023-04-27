@@ -5,7 +5,7 @@ const AppInfo = (props) => {
 
     return (
         <div className="app-info">
-            <h1>Сотрудники в компании: {32 <= nameCompany.length ? nameCompany.slice(0, 32) + '...' : nameCompany} 
+            <h1>Employees in the company: {32 <= nameCompany.length ? nameCompany.slice(0, 32) + '...' : nameCompany} 
                 {needBtns && (
                     <button type="button"
                         className="btn-pen btn-sm "
@@ -14,8 +14,8 @@ const AppInfo = (props) => {
                     </button>
                 )}
             </h1>
-            <h2>Общее число сотрудников: {dataLength}</h2>
-            <h2>Премию получат: {premium}</h2>
+            <h2>Total number of employees: {dataLength}</h2>
+            <h2>The bonus will be received by: {premium}</h2>
         </div>
     )
 }

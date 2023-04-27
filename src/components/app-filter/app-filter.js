@@ -2,9 +2,9 @@ import "./app-filter.css";
 
 const AppFilter = (props) => {
     const dataBtns = [
-        {key: 'all', placeHolder: 'Все сотрудники'},
-        {key: 'promotion', placeHolder: 'На повышение'},
-        {key: 'moreThan1000', placeHolder: 'З/П больше 1000$'},
+        {key: 'all', placeHolder: 'All emploees'},
+        {key: 'promotion', placeHolder: 'For a promotion'},
+        {key: 'moreThan1000', placeHolder: 'Salary is more than $1000.'},
     ]
 
     const btnsFilter = dataBtns.map(btn => {

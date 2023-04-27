@@ -80,7 +80,7 @@ class Modal extends React.Component {
                         <>
                             {this.canClose = false}
                             <h4>
-                                виберіть дію
+                                select action
                             </h4>
                             <hr />
                             <div className="btn-group">
@@ -208,7 +208,6 @@ class Modal extends React.Component {
                     )} {modalName === 'reportModal' && (
                         <>
                             {canCloseReportModal ? this.canClose = false : this.canClose = true}
-                            {console.log(navForReportModal)}
                             <h4>{massege}</h4>
                             <hr />
                             <button onClick={() => canCloseReportModal ? onChangeApp('selectAction', navForReportModal || 'selectAction') : this.onCloseModal()}>

@@ -22,18 +22,18 @@ class EmployeesAddForm extends Component {
 
         return (
             <div className="app-add-form">
-                <h3>Добавьте нового сотрудника</h3>
+                <h3>Add a new employee.</h3>
                 <form
                     className="add-form d-flex">
                     <input type="text"
                         className="form-control new-post-label"
-                        placeholder="Как его зовут?"
+                        placeholder="What is their name?"
                         name='name'
                         value={name}
                         onChange={this.onChangeValue} />
                     <input type="number"
                         className="form-control new-post-label"
-                        placeholder="З/П в $?"
+                        placeholder="Salary in $?"
                         name='salary'
                         value={salary}
                         onChange={this.onChangeValue} />
@@ -49,7 +49,7 @@ class EmployeesAddForm extends Component {
                                     name: '',
                                     salary: ''
                                 }))
-                            }}>Добавить</button>
+                            }}>Add</button>
                 </form>
             </div>
         )
