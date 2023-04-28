@@ -1,2 +1,2 @@
-link to site 
+link to the site 
 https://company-nazar.netlify.app/
