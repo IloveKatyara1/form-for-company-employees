@@ -1,52 +1,37 @@
-import { Component } from 'react';
+import { useState, useDeferredValue } from 'react';
 
 import './search-panel.css';
 
-class SearchPanel extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            term: '',
-            clazz: 'btn_remove'
-        }
-    }
+const SearchPanel = (props) => {
+    const [term, setTerm] = useState();
 
-    onUpdataSearch = (e) => {
-        this.setState(({term, clazz}) => ({
-            term: e.target.value,
-            clazz: `btn_remove ${e.target.value.length >= 1 ? 'active' : ''}`
-        }))
+    const onUpdataSearch = (e) => {
+        setTerm(e.target.value);
 
-        this.props.onUpdataTerm(e.target.value);
-    }
+        props.onUpdataTerm(e.target.value);
+    };
 
-    onClearSearch = () => {
-        this.setState(({term, clazz}) => ({
-            term: '',
-            clazz: `btn_remove`
-        }))
+    const onClearSearch = () => {
+        setTerm('');
 
-        this.props.onUpdataTerm('');
-    }
+        props.onUpdataTerm('');
+    };
 
-    render() {
-        return (
-            <div className='search-div'>
-                <input type="text"
-                    className="form-control search-input"
-                    placeholder="Find an employee"
-                    value={this.state.term} 
-                    onChange={this.onUpdataSearch}
-                />
+    return (
+        <div className="search-div">
+            <input
+                type="text"
+                className="form-control search-input"
+                placeholder="Find an employee"
+                value={term}
+                onChange={onUpdataSearch}
+            />
 
-                <button className={this.state.clazz}
-                    onClick={this.onClearSearch}  
-                >
-                    ✖
-                </button>
-            </div>
-        )
-    }
-}
+            <button className={`btn_remove ${term ? 'active' : ''}`} onClick={onClearSearch}>
+                ✖
+            </button>
+        </div>
+    );
+};
 
 export default SearchPanel;
